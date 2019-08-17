@@ -1,0 +1,35 @@
+.container {
+    position: absolute;
+    top: 50px;
+    width: 100%;
+    height: calc(100vh - 50px);
+    z-index: -1;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.listContainer {
+    height: 75%;
+    padding-top: 8px;
+}
+
+.newItemContainer {
+    display: flex;
+    width: 100%;
+    border: 1px solid rgba(26, 26, 26, 0.308);
+    border-radius: 25px;
+}
+
+.contentWidth {
+    max-width: 400px;
+    width: 85%;
+}
+
+.emptyList {
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    padding-bottom: 10px;
+}

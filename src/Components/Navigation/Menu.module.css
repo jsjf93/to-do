@@ -1,0 +1,53 @@
+.menu__container {
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    box-sizing: border-box;
+    background-color: rgb(97, 97, 97);
+    border-right: 1px solid rgb(26, 26, 26);
+    color: rgb(255, 255, 255);
+
+    -webkit-transition: -webkit-transform 0.3s 0.3s;
+    transition: -webkit-transform 0.3s 0.3s;
+    transition: transform 0.3s 0.3s;
+    transition: transform 0.3s 0.3s, -webkit-transform 0.3s 0.3s;
+}
+
+.menu__container__fromLeft {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+    -webkit-transition-delay: 0s;
+    transition-delay: 0s;
+}
+
+.menu__container__visible {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    -webkit-transition-delay: 0s;
+    transition-delay: 0s;
+}
+
+.menu__closeButton {
+    margin: 9px 0 0 16px;
+    position: absolute;
+    width: 32px;
+    height: 32px;
+
+    opacity: 0.6;
+}
+
+.menu__closeButton:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.menu__listContainer {
+    width: 100%;
+    height: 100%;
+    padding-top: 50px;
+}
+
+.menu__listItem {
+    display: flex;
+    justify-content: center;
+}
