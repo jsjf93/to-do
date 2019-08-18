@@ -1,28 +1,29 @@
 import React from 'react';
-import styles from './ContentView.module.css';
+import styles from './ToDoList.module.css';
 import { ToDoItem } from './ToDoItem';
 import { createClassName } from '../Utilities/UtilityFunctions';
 import { NewToDo } from './NewToDo';
-import { observer } from 'mobx-react';
+import { observer, inject } from 'mobx-react';
 import { ToDoStore } from '../../Stores/ToDoStore';
 import cakeIcon from './Icons/cake_icon.svg';
 
 interface IProps {
-    store: ToDoStore;
+    toDoStore: ToDoStore;
 }
 
+@inject('toDoStore')
 @observer
-export class ContentView extends React.Component<IProps> {
+export class ToDoList extends React.Component<IProps> {
     public render() {
         return (
             <div className={styles.container}>
-                {this.props.store.getTodoList().length > 0
+                {this.props.toDoStore.getTodoList().length > 0
                     ? this.renderTodoList()
                     : this.renderEmptyList()
                 }
 
                 <div className={createClassName([styles.newItemContainer, styles.contentWidth])}>
-                    <NewToDo store={this.props.store}/>
+                    <NewToDo store={this.props.toDoStore}/>
                 </div>
             </div>
         );
@@ -31,9 +32,9 @@ export class ContentView extends React.Component<IProps> {
     private renderTodoList() {
         return (
             <div className={createClassName([styles.listContainer, styles.contentWidth])}>
-                {this.props.store.getTodoList().map((i, key) => 
+                {this.props.toDoStore.getTodoList().map((i, key) => 
                     <React.Fragment key={key}>
-                        <ToDoItem value={i} store={this.props.store}/>
+                        <ToDoItem value={i} store={this.props.toDoStore}/>
                         <hr />  
                     </React.Fragment>
                 )}
