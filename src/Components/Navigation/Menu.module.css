@@ -50,4 +50,6 @@
 .menu__listItem {
     display: flex;
     justify-content: center;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
 }

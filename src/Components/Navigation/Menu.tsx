@@ -1,9 +1,15 @@
 import React from 'react';
 import styles from './Menu.module.css';
 import close from './close-icon.svg';
+import { Link } from 'react-router-dom';
+
+export interface IMenuItem {
+    link: string;
+    title: string;
+}
 
 interface IProps {
-    menuOptions: string[];
+    menuOptions: IMenuItem[];
     toggleMenu: () => void;
     showMenu: boolean;
 }
@@ -21,9 +27,20 @@ export const Menu = (props: IProps) => {
                 alt="Close Button"
                 onClick={props.toggleMenu}
             />
-            <div className={styles.menu__listContainer}>
-                {props.menuOptions.map((m, key) => <div key={key} className={styles.menu__listItem}>{m}</div>)}
-            </div>
+            <nav>
+                <div className={styles.menu__listContainer}>
+                    {props.menuOptions.map((m, key) => (
+                        <Link 
+                            to={m.link} 
+                            key={key} 
+                            className={styles.menu__listItem}
+                        >
+                            {m.title}
+                        </Link>
+                    ))}
+                </div>
+
+            </nav>
         </div>
     )
 }

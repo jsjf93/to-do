@@ -1,0 +1,11 @@
+.container {
+    position: absolute;
+    top: 50px;
+    width: 100%;
+    height: calc(100vh - 50px);
+    z-index: -1;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+}
