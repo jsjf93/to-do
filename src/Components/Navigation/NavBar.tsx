@@ -4,7 +4,7 @@ import menu from './menu-icon.svg';
 import { createClassName } from '../Utilities/UtilityFunctions';
 
 interface IProps {
-    toggleMenu: () => void;
+    toggleMenu: (showMenu: boolean) => void;
 }
 
 export const NavBar = (props: IProps) => {
@@ -15,7 +15,7 @@ export const NavBar = (props: IProps) => {
                     className={styles.nav__menuButton} 
                     src={menu} 
                     alt="Menu Button"
-                    onClick={props.toggleMenu}
+                    onClick={() => props.toggleMenu(true)}
                 />
             </div>
 
