@@ -5,6 +5,7 @@ import ReactTooltip from 'react-tooltip';
 import { createClassName } from '../Utilities/UtilityFunctions';
 import { ToDoStore } from '../../Stores/ToDoStore';
 import { observer } from 'mobx-react';
+import { KeyCodes } from '../Utilities/KeyCodes';
 
 interface IProps {
     store: ToDoStore;
@@ -21,8 +22,17 @@ export class NewToDo extends React.Component<IProps> {
 
     private handleAdd = () => {
         const text = this.input.current.textContent;
-        this.props.store.addTodoItem(text);
-        this.input.current.textContent = '';
+        if (text.length) {
+            this.props.store.addTodoItem(text);
+            this.input.current.textContent = '';
+        }
+    }
+
+    private handleKeyDown = (e: React.KeyboardEvent) => {
+        if (e.keyCode === KeyCodes.Enter) {
+            e.preventDefault();
+            this.handleAdd();
+        }
     }
 
     public render() {
@@ -42,6 +52,7 @@ export class NewToDo extends React.Component<IProps> {
                 contentEditable={true}
                 suppressContentEditableWarning={true}
                 placeholder={'Your todo goes here'}
+                onKeyDown={e => this.handleKeyDown(e)}
             />
         );
     }

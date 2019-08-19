@@ -31,7 +31,7 @@ export class ToDoList extends React.Component<IProps> {
 
     private renderTodoList() {
         return (
-            <div className={createClassName([styles.listContainer, styles.contentWidth])}>
+            <div className={createClassName([styles.listContainer, styles.contentWidth, styles.scrollBar])}>
                 {this.props.toDoStore.getTodoList().map((i, key) => 
                     <React.Fragment key={key}>
                         <ToDoItem value={i} store={this.props.toDoStore}/>
