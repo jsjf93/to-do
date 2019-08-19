@@ -4,7 +4,6 @@ export interface ITodo {
     id: number;
     name: string;
     isCompleted: boolean;
-    isDeleted: boolean;
 }
 
 export class ToDoStore {
@@ -12,13 +11,13 @@ export class ToDoStore {
 
     constructor() {
         this.todoList = [
-            { id: 0, name: 'To do 1', isCompleted: false, isDeleted: false }, 
-            { id: 1, name: 'To do 2', isCompleted: false, isDeleted: false }
+            { id: 0, name: 'To do 1', isCompleted: false }, 
+            { id: 1, name: 'To do 2', isCompleted: false }
         ];
     }
 
     public getTodoList() {
-        return this.todoList.filter(i => !i.isCompleted && !i.isDeleted);
+        return this.todoList.filter(i => !i.isCompleted);
     }
 
     @action
@@ -26,9 +25,8 @@ export class ToDoStore {
         const todo: ITodo = {
             id: this.todoList[this.todoList.length-1].id + 1,
             name: text,
-            isCompleted: false,
-            isDeleted: false
-        }
+            isCompleted: false
+        };
         this.todoList.push(todo);
     }
 
@@ -40,10 +38,5 @@ export class ToDoStore {
     @action
     public completeTodoItem(id: number) {
         this.todoList[id].isCompleted = true;
-    }
-
-    @action
-    public deleteTodoItem(id: number) {
-        this.todoList[id].isDeleted = true;
     }
 }

@@ -1,7 +1,6 @@
 import React from 'react'
 import styles from './ToDoItem.module.css';
 import completeIcon from './Icons/complete_icon.svg';
-import removeIcon from './Icons/remove_icon.svg';
 import ReactTooltip from 'react-tooltip';
 import { createClassName } from '../Utilities/UtilityFunctions';
 import { ITodo, ToDoStore } from '../../Stores/ToDoStore';
@@ -24,10 +23,6 @@ export class ToDoItem extends React.PureComponent<IProps> {
         store.completeTodoItem(value.id);
     }
 
-    private handleRemove = () => {
-        const { store, value } = this.props;
-        store.deleteTodoItem(value.id);
-    }
 
     private handleUpdate = () => {
         const { store, value } = this.props;
@@ -40,7 +35,6 @@ export class ToDoItem extends React.PureComponent<IProps> {
             <div className={styles.container}>
                 {this.renderCompleteButton()}
                 {this.renderToDoContent()}
-                {this.renderRemoveButton()}
             </div>
         );
     }
@@ -76,21 +70,4 @@ export class ToDoItem extends React.PureComponent<IProps> {
         );
     }
 
-    private renderRemoveButton() {
-        const id = "remove";
-
-        return (
-            <>
-                <img 
-                    className={styles.icon} 
-                    src={removeIcon} 
-                    alt="To Do Remove Icon"
-                    data-tip
-                    data-for={id}
-                    onClick={this.handleRemove}
-                />
-                <ReactTooltip id={id} place="top" effect="solid" delayShow={2000}>Delete the task</ReactTooltip>
-            </>
-        );
-    }
 }
